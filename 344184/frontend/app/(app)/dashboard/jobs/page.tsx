@@ -1,0 +1,4 @@
+"use client";
+import{useEffect,useState}from"react";import{api}from"../../../../lib/api";
+type Job={id:number;title:string;company:string;location:string;employment_type:string;required_skills:string[];match_score:number;missing_skills:string[]};
+export default function Jobs(){const[d,setD]=useState<Job[]>([]);useEffect(()=>{api<Job[]>("/api/jobs").then(setD).catch(()=>undefined)},[]);return <><p className="eyebrow">DEMO JOB BOARD</p><h1>Job compatibility</h1><div className="notice">These are clearly labelled demo jobs. Scores show skill compatibility only—not live openings or hiring likelihood.</div><div className="grid">{d.map(j=><article className="card" key={j.id}><span className="tag">{j.match_score}% compatibility</span><h3>{j.title}</h3><p>{j.company} · {j.location} · {j.employment_type}</p><p><b>Required:</b> {j.required_skills.join(", ")}</p><p><b>Missing:</b> {j.missing_skills.join(", ")||"No core skills missing"}</p></article>)}</div></>}

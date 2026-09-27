@@ -1,0 +1,1 @@
+export default function Analytics(){return <><p className="eyebrow">ANALYTICS</p><h1>Progress over time</h1><div className="empty">No historical data yet. Complete resume analyses, roadmap items, and interviews to build a real progress history.</div></>}
